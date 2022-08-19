@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* {
+  box-sizing: border-box;
+}
+
+.dashboard-logo {
+  color: white;
+  font-size: 24px;
+  padding: 20px;
+  /* border-bottom: 1px solid #64c7ba; */
+  /* margin-bottom: 15px; */
+  text-align: center;
+}
+
+#sideMenu {
+  background: #323584;
+  width: 240px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transition: 200ms;
+}
+nav span {
+  display: block;
+  font-size: 16px;
+  padding: 15px;
+  border-left: 5px solid transparent;
+  color: #e7eaf4;
+}
+nav span.active  {
+  position: relative;
+  margin-left: 8px;
+  position: relative;
+  background: #e7eaf4;
+  border-radius: 24px 0px 0px 24px;
+  color: #323584;
+  /* border-left: 5px solid #64c7ba; */
+}
+
+nav span.active .fa {
+  color: #323584;
+}
+
+nav span.active::before {
+  content: "";
+  position: absolute;
+  top: -31px;
+  right: 0px;
+  bottom: 0;
+  height: 31px;
+  border-top-color: transparent;
+  border-right: 20px solid #323584;
+  border-left-color: transparent;
+  border-bottom: transparent;
+  border-radius: 0px 0px 48px 0px;
+  z-index: 1;
+}
+nav span .fa {
+  color: white;
+  width: 30px;
+}
+.dashboard-header {
+  width: 100%;
+  box-shadow: 0 0 13px 0 rgb(82 63 105 / 8%);
+  background-color: white;
+  padding: 10px;
+  /* margin-left: 240px; */
+}
+.dashboard-header .search-area {
+  display: inline-block;
+}
+.dashboard-header .search-area .fa {
+  color: #e7eaf4;
+}
+.dashboard-header .search-area input[type="text"] {
+  background: #e7eaf4;
+  border-radius: 16px;
+  width: 150%;
+  border: none;
+  color: #64c7ba;
+  padding: 8px 10px;
+}
+.dashboard-header .search-area input[type="text"]:hover {
+  background: #e7eaf4;
+}
+.dashboard-header .user-area {
+  display: inline-block;
+  float: right;
+  padding: 8px;
+}
+.dashboard-header .user-area span {
+  display: inline-block;
+  padding-right: 20px;
+  color: #aaa;
+}
+.dashboard-header .user-area span:hover {
+  text-decoration: none;
+}
+.dashboard-header .user-area span.notification {
+  position: relative;
+}
+.dashboard-header .user-area span.notification .circle {
+  background: #64c7ba;
+  color: #f2f5fa;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 9px;
+  text-align: center;
+  position: absolute;
+  top: -5px;
+  left: 5px;
+} 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
