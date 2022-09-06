@@ -7,8 +7,12 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.22.6",
+    "chart.js": "^3.9.1",
+    "faker": "5.5.3",
     "react": "^18.2.0",
+    "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -24,6 +28,10 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "devDependencies": {
+    "@types/faker": "5.5.3",
+    "tailwindcss": "^3.1.8"
   },
   "browserslist": {
     "production": [

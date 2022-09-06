@@ -10,36 +10,132 @@ import patients from "../../assets/patients.png";
 import vis from "../../assets/vis.png";
 import op from "../../assets/op.png";
 import nw from "../../assets/nw.png";
+import {
+  FaUserAlt,
+  FaHospitalUser,
+  FaLocationArrow,
+  FaUserMd,
+  FaBuilding
+} from "react-icons/fa";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  ArcElement,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import faker from "faker";
+import { Area } from "../Charts/Area";
+import { PieChart } from "../Charts/Pie";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  Title,
+  Tooltip,
+  ArcElement,
+  Filler,
+  Legend,
+  LineElement
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "bottom"
+    },
+    title: {
+      display: true,
+      text: "Chart.js Bar Chart"
+    }
+  }
+};
+
+const labels = ["January", "February", "March", "April", "May", "June", "July"];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      backgroundColor: "rgba(255, 99, 132, 0.5)"
+    },
+    {
+      label: "Dataset 2",
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      backgroundColor: "rgba(53, 162, 235, 0.5)"
+    }
+  ]
+};
 function Dashboard() {
   const [activeMenu, setactiveMenu] = useState("Appointments");
   const navMenu = [
     {
       name: "Users",
-      icon: <i className="fa fa-regular fa-house"></i>
+      icon: <FaUserAlt className="fa " />
     },
     {
       name: "Patients",
-      icon: <i className="fa fa-regular fa-hospital-user"></i>
+      icon: <FaHospitalUser className="fa " />
     },
     {
       name: "Location",
-      icon: <i className="fa fa-map-marker" aria-hidden="true"></i>
+      icon: <FaLocationArrow className="fa " />
     },
     {
       name: "Department",
-      icon: <i className="fa fa-solid fa-file-chart-column"></i>
+      icon: <FaBuilding className="fa " />
     },
     {
       name: "Providers",
-      icon: <i className="fa fa-solid fa-chalkboard-user"></i>
+      icon: <FaUserMd className="fa" />
     },
     { name: "Appointments", icon: <i className="fa fa-solid fa-bars"></i> }
   ];
+
+  const pieChartData = {
+    labels: ["Open", "Close", "Pending"],
+    datasets: [
+      {
+        label: "Appointment Status",
+        data: [12, 19, 3],
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(82, 196, 26, 0.24)",
+          "rgba(255, 206, 86, 0.2)"
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(82, 196, 26, 0.24)",
+          "rgba(255, 206, 86, 0.2)"
+        ],
+        borderWidth: 2
+      }
+    ]
+  };
   return (
     <>
       <section id="sideMenu">
         <nav className="dashboard-nav">
-          <div className=" dashboard-logo">Care message</div>
+          <div
+            className=" dashboard-logo"
+            onClick={(e) => {
+              console.log(e);
+            }}
+          >
+            Care message
+          </div>
           {navMenu.map((data) => (
             // eslint-disable-next-line jsx-a11y/anchor-is-valid
             <span
@@ -50,8 +146,18 @@ function Dashboard() {
               //   href="/home"
               className={`${activeMenu === data.name ? "active" : ""} `}
             >
+              {activeMenu === data.name ? (
+                <span className="clip-top"></span>
+              ) : (
+                ""
+              )}
               {data.icon}
               {data.name}
+              {activeMenu === data.name ? (
+                <span className="clip-bottom"></span>
+              ) : (
+                ""
+              )}
             </span>
           ))}
         </nav>
@@ -96,23 +202,33 @@ function Dashboard() {
           <PatientsCard val={5} src={op} />
           <PatientsCard val={5} src={nw} />
         </section>
-        <section>
-          {/* <CChart
-            type="doughnut"
-            data={{
-              labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
-              datasets: [
-                {
-                  backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
-                  data: [40, 20, 80, 10]
-                }
-              ]
-            }}
-          /> */}
+        <section>{/* <Doughnut data={[]} /> */}</section>
+        <section
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "24px"
+          }}
+          className="w-100 d-flex flex-space-between "
+        >
+          <div className="w-30 d-flex align-items-center">
+            <Bar options={options} data={data} height="" />
+          </div>
+          <div className="w-30 d-flex align-items-center">
+            <Area />
+          </div>
+          <div className="w-30  ">
+            {/* <Bar options={options} data={data} height="" /> */}
+            <PieChart data={pieChartData} />
+          </div>
         </section>
         <section
           className=""
-          style={{ padding: "24px", height: "calc(100% - 58px)" }}
+          style={{
+            padding: "24px",
+            height: "calc(100% - 58px)",
+            borderRadius: "16px"
+          }}
         >
           <ConditionalRender condition={activeMenu === "Users"}>
             <Users />

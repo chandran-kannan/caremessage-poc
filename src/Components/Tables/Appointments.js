@@ -5,6 +5,7 @@ import {
   fetchAppointments,
   updateAppointment
 } from "../../Services/Api";
+import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 
 const EditableCell = ({
   editing,
@@ -210,7 +211,7 @@ const Appointment = () => {
             disabled={editingKey !== ""}
             onClick={() => edit(record)}
           >
-            Edit
+            <FaPencilAlt />
           </Typography.Link>
         );
       }
@@ -245,7 +246,7 @@ const Appointment = () => {
             disabled={deleteKey !== ""}
             onClick={() => setDeleteKey(record.key)}
           >
-            Delete
+            <FaTrashAlt style={{ color: "red" }} />
           </Typography.Link>
         );
       }

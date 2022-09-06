@@ -1,5 +1,9 @@
 /* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
-
+.login-header {
+  font-family: "Ubuntu", sans-serif;
+  padding-bottom: 24px;
+  font-size: 28px;
+}
 .login-page {
   width: 360px;
   justify-content: center;
@@ -17,7 +21,10 @@
   margin: 0 auto;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 17px;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 7px 7px 14px #e6e6e6, -7px -7px 14px #e9e9e9;
 }
 .form input {
   font-family: "Roboto", sans-serif;

@@ -15,6 +15,7 @@ function Login() {
   return (
     <div className="login-page">
       <div className="form">
+        <h2 className="login-header">Health Care</h2>
         <form
           className="login-form"
           onChange={(event) => {
@@ -24,8 +25,8 @@ function Login() {
             });
           }}
         >
-          <input type="text" placeholder="userName" name="userName" />
-          <input type="password" placeholder="password" name="password" />
+          <input type="text" placeholder="User name" name="userName" />
+          <input type="password" placeholder="Password" name="password" />
           <button
             onClick={(event) => {
               event.preventDefault();
